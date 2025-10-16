@@ -13,6 +13,8 @@ jobs:
   # Job 1: Greeting
   greet:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -29,6 +31,8 @@ jobs:
   # Job 2: File operations
   file-check:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -50,6 +54,8 @@ jobs:
   # Job 3: Multi-step example
   multi-step-example:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
