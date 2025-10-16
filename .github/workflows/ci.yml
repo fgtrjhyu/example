@@ -1,0 +1,67 @@
+name: CI Example
+
+# This workflow demonstrates basic GitHub Actions concepts
+# It runs on push and pull request events
+
+on:
+  push:
+    branches: [ main, copilot/* ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  # Job 1: Greeting
+  greet:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Say Hello
+        run: echo "Hello from GitHub Actions! 🚀"
+      
+      - name: Display repository info
+        run: |
+          echo "Repository: ${{ github.repository }}"
+          echo "Branch: ${{ github.ref }}"
+          echo "Event: ${{ github.event_name }}"
+
+  # Job 2: File operations
+  file-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: List files
+        run: |
+          echo "Files in the repository:"
+          ls -la
+      
+      - name: Check README exists
+        run: |
+          if [ -f "README.md" ]; then
+            echo "✅ README.md exists"
+          else
+            echo "❌ README.md not found"
+            exit 1
+          fi
+
+  # Job 3: Multi-step example
+  multi-step-example:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Step 1 - Setup
+        run: echo "Setting up the environment..."
+      
+      - name: Step 2 - Build
+        run: echo "Building the project..."
+      
+      - name: Step 3 - Test
+        run: echo "Running tests..."
+      
+      - name: Step 4 - Complete
+        run: echo "✅ All steps completed successfully!"
