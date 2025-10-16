@@ -1,3 +1,1 @@
-# example
-Example
-added second line
+これは github の使い方を学ぶためのプロジェクトです
